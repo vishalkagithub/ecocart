@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block childpage %}
+<div class="row heading text-center my-3">
+    <div class="col-sm-5 mx-auto">
+        <p class="fs-2 p-0 m-0">My<b class="txt-color:orange">Portfolio<i class="fas fa-user"></i></b></p>
+    </div>
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <title>Your Name's Portfolio</title>
+    <style>
+        .potfolio-img {
+            max-width: 100%;
+        height: auto;
+        }
+        .section {
+           padding:60px 0;
+           }
+    </style>
+</head>
+<body>
+   <!------  Cover Section  ------>
+   <header class="bg-light text-dark text-center section">
+       <h1>Vishal Verma</h1>
+       <h3>Web Developer</h3>
+       <img src="{% static 'me.jpeg' %}" alt="Your Name" class="rounded-circle" style="width:">
+   </header>
+</body>
+{% endblock %}

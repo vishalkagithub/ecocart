@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block childpage %}
+<!--start heading-->
+ <div class="row mb-2 ">
+
+    <div class="col-sm-4 mx-auto text-center">
+        <p class="fs-3 m-0 p-0 ">Our <b class="txt-colororange">Product's <i class="fas fa-box"></i></b></p>
+        <hr/>
+        <i>Hii this is just a dummy text which is
+        created for just to check that our program is running accurately or not</i>
+        <hr/>
+    </div>
+</div>
+<!--end heading-->
+
+<div class="row">
+    <div class="col-sm-3">
+    <ul class="list-group">
+        <li class="list-group-item bg-colorgreen text-light">
+            Featured products <i class="fas fa-cart-shopping"></i>
+        </li>
+        {% for x in categorydata %}
+
+        <li class="list-group-item ">
+
+            <img src="../{{x.category_picture}}" class="img-thumbnail" style="height:50px;"/>
+        <a href="/product?pid={{x.id}}" style="text-decoration:none;" class="text-dark">{{ x.product_category}}</a>
+
+        </li>
+
+        {% endfor %}
+          <li class="list-group-item ">
+
+        <a href="/product/" style="text-decoration:none;" class="text-dark">All Product</a>
+
+        </li>
+
+    </ul>
+    </div>
+    <div class="col-sm-9">
+    <div class="row">
+       {% for i in productdata %}
+           <div class="col-sm-3">
+               <!--start product-->
+               <div class="card border-0 shadow p-3 mb-5  rounded offers tran" >
+
+                   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"> <i class="fa-solid fa-indian-rupee-sign"></i> {{i.discount}} <span class="visually-hidden">unread messages</span></span>
+
+
+  <img src="../{{i.product_image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+
+    <h5 class="card-title">{{i.product_name}}</h5>
+    <p class="card-text p-0 m-0">
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        <span>{{i.price}}</span> | {{i.quantity}}
+    <!--cart count-->
+      <form action="/productcart/">
+      <input type="hidden" name="pid" value="{{i.id}}"/>
+      <input type="hidden" name="pimage" value="{{i.product_image}}"/>
+      <input type="hidden" name="pprice" value="{{i.price}}"/>
+      <input type="hidden" name="pname" value="{{i.product_name}}"/>
+      <input type="hidden" name="pw" value="{{i.quantity}}"/>
+
+
+
+
+
+      <div class="input-group">
+      <b class="input-group-text fs-4 " onclick="cminus{{i.id}}()">-</b>
+        <input type="text"  value="0" name="pquantity" readonly class="form-control text-center " id="carttxt{{i.id}}"/>
+      <b class="input-group-text fs-4" onclick="cplus{{i.id}}()">+</b>
+  </div>
+    <!-- end cart count--></p>
+
+
+    <input type="submit" value="Add" class="btn bg-colororange text-light"/>
+  </form>
+  </div>
+</div>
+
+               <!--end product-->
+           </div>
+           <script>
+               var x{{i.id}}=0
+               function cplus{{i.id}}()
+               {
+               x{{i.id}}++;
+               document.getElementById("carttxt{{i.id}}").value=x{{i.id}}
+               }
+               function cminus{{i.id}}()
+               {
+               if(x{{i.id}}>0)
+               {
+               x{{i.id}}--;
+               document.getElementById("carttxt{{i.id}}").value=x{{i.id}}
+               }
+               }
+
+           </script>
+{% endfor %}
+    </div>
+    </div>
+</div>
+{% endblock %}

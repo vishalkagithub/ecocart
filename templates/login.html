@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block childpage %}
+<style>
+    .form-control
+    {
+    height:50px;
+    border:0 !important;
+    }
+</style>
+<!--start heading-->
+ <div class="row mb-2 mt-4">
+
+    <div class="col-sm-4 mx-auto text-center">
+        <p class="fs-3 m-0 p-0 ">Login <b class="txt-colororange">Now </b></p>
+
+        <i>Please enter your username and password and click login button for login your ID</i>
+        <hr/>
+    </div>
+</div>
+<!--end heading-->
+<div class="row">
+    <div class="col-sm-4 mx-auto">
+        <form method="post">
+            {% csrf_token %}
+        Userid<br/><input type="email" name="userid" class="form-control shadow-lg mb-2" placeholder="Your username is your email id"/>
+
+        Password<br/><input type="password" name="passwd" class="form-control shadow-lg mb-2" placeholder="Password.."/>
+
+        <input type="submit" value="Login" class="form-control border-0 mt-2 btn bg-colororange text-light border-0">
+        </form>
+    </div>
+</div>
+{% endblock %}

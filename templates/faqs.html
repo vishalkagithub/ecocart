@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+f
+
+{% block childpage %}
+<style>
+
+
+
+</style>
+
+
+<div class="container-fluid ">
+    <div class="row heading text-center my-2">
+    <div class="col-sm-5 mx-auto">
+    <p class="fs-2 p-0 m-0">Popular <b class="txt-colororange">Faq's <i class="fa-solid fa-question"></i> </b></p>
+        <b>If you didn't get your answer then contact us via Email , call etc.</b><hr/>
+    </div>
+</div>
+    <div class="row pb-3">
+
+    <div class="col-sm-8 mx-auto"><!--start accordion-->
+    <div class="accordion  " id="accordionExample">
+      <!--first-->
+  <div class="accordion-item  shadow-lg rounded ">
+    <h2 class="accordion-header ">
+      <button class="accordion-button collapsed rounded " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <b>aWhat payment methods do you accept?</b>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+      <div class="accordion-body text-secondary">
+        <span>We accept a variety of payment methods, including major credit and debit cards (Visa, MasterCard, American Express), PayPal, and other secure payment options. Please check our checkout page for the full list.</span>
+      </div>
+    </div>
+  </div>
+      <!--second-->
+
+  <div class="accordion-item mt-3 shadow-lg rounded">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <b>How can I track my order?</b>
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body text-secondary">
+    <span>Once your order is shipped, you will receive a confirmation email with a tracking number. You can use this number on our website’s tracking page to see the status of your shipment.</span>
+      </div>
+    </div>
+  </div>
+      <!--Third-->
+
+  <div class="accordion-item mt-3 shadow-lg rounded">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <b>What is your return policy?</b>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body text-secondary">
+    <span>We offer a 30-day return policy. Items must be unused and in their original packaging. To initiate a return, please contact our customer service team for further instructions.</span>
+      </div>
+    </div>
+  </div>
+      <!--Fourth-->
+
+        <div class="accordion-item mt-3 shadow-lg rounded">
+    <h2 class="accordion-header ">
+      <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        <b>How do I change or cancel my order?</b>
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+      <div class="accordion-body text-secondary">
+        <span>If you need to change or cancel your order, please contact us as soon as possible. If your order hasn’t been processed yet, we’ll be able to assist you. Once an order is in the shipping process, changes may not be possible.</span>
+      </div>
+    </div>
+  </div>
+      <!--Fifth-->
+
+  <div class="accordion-item mt-3 shadow-lg rounded">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <b>Do you offer free shipping?</b>
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body text-secondary">
+    <span>Yes, we offer free shipping on orders over a certain amount. Please check our shipping policy page for the specific threshold and details.</span>
+      </div>
+    </div>
+  </div>
+      <!--sixth-->
+
+  <div class="accordion-item mt-3 shadow-lg rounded">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        <b>How long does shipping take?</b>
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body text-secondary">
+    <span>Shipping times vary based on your location and the shipping method selected at checkout. Generally, standard shipping takes 3-7 business days. Express options are also available for faster delivery.</span>
+      </div>
+    </div>
+  </div>
+         <!--Seventh-->
+
+  <div class="accordion-item mt-3 shadow-lg rounded">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        <b>What should I do if I receive a damaged item?</b>
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body text-secondary">
+        <span>We’re sorry to hear that! Please contact our customer service team within 48 hours of receiving the item. We will guide you through the process of returning the damaged item and issuing a replacement or refund.</span>
+
+      </div>
+    </div>
+  </div>
+      <!--Eightth-->
+
+        <div class="accordion-item mt-3 shadow-lg rounded">
+    <h2 class="accordion-header ">
+      <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        <b>Can I exchange an item?</b>
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+      <div class="accordion-body text-secondary">
+        <span>Yes, exchanges are allowed for the same item in a different size or color, subject to availability. Please initiate the exchange process by contacting our customer service team.</span>
+      </div>
+    </div>
+  </div>
+      <!--Ninth-->
+
+  <div class="accordion-item mt-3 shadow-lg rounded">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+        <b>How do I create an account?</b>
+      </button>
+    </h2>
+    <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body text-secondary">
+      <span>To create an account, click on the “Sign Up” or “Register” button on our homepage. Fill in the required information, and you’ll receive a confirmation email once your account is set up.</span>
+      </div>
+    </div>
+  </div>
+      <!--tenth-->
+
+  <div class="accordion-item mt-3 shadow-lg rounded">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+        <b>What if I forget my password?</b>
+      </button>
+    </h2>
+    <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body text-secondary">
+    <span>If you forget your password, click on the “Forgot Password?” link on the login page. Follow the instructions to reset your password via email.</span>
+      </div>
+    </div>
+  </div>
+   <!--end cordion-->
+</div>
+
+    </div>
+    </div>
+</div>
+
+{% endblock %}

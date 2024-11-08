@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block childpage %}
+<style xmlns="http://www.w3.org/1999/html">
+.textcolor:hover{
+color:#f7931e!important;
+}
+.cardzoom{
+transition:all .5s
+}
+.cardzoom:hover{
+transform:scale(1.03);
+transition:all .5s;
+
+}
+.ic{
+border-radius:50%;
+border:1px solid black;
+padding:15px;
+}
+</style>
+<div class="row slider">
+    <!--start slider-->
+    <div class="col-sm-12 p-0">
+
+        <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2000" >
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+     </div>
+  <div class="carousel-inner">
+      {% for i in sliderdata %}
+    <div class="carousel-item active">
+      <img src="../{{i.slider_picture}}" style="max-height:500px;" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{i.title}}</h5>
+        <p>{{i.description}}</p>
+      </div>
+    </div>
+      {% endfor %}
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+    </div>
+    <!--end slider-->
+</div>
+
+<!--categories-->
+<!--start heading-->
+<div class="row mb-2 mt-4">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-7 ">
+        <p class="fs-3 m-0 p-0 ">Featured <b class="txt-colororange">Categories <i class="fa-solid fa-list-alt"></i></b></p>
+        <i>Hii this is just a dummy text which is
+        created for just to check that our program is running accurately or not</i>
+        <hr/>
+    </div>
+</div>
+
+
+<!--end heading-->
+<div class="row category pt-3">
+
+
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+    <div class="row ">
+            {% for x in cdata %}
+        
+        <div class="col-sm-2 text-center">
+        <p  class="shadow-lg p-3 mb-3 bg-body-tertiary rounded product tran">
+            <img src="../{{x.category_picture}}" style="max-height:150px;" class="img-fluid"/>
+
+            <br/>
+            <a href="/product?pid={{x.id}}" style="text-decoration:none;" class="text-dark">{{ x.product_category}}</a>
+        </p>
+
+
+        </div>
+            {% endfor %}
+    </div>
+</div>
+<div class="col-sm-1"></div>
+</div>
+    <!--end categories-->
+<div class="row mb-2 mt-4">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-7 ">
+        <p class="fs-3 m-0 p-0 ">Today Deals <b class="txt-colororange">Best Offer's <i class="fa-solid fa-bolt"></i></b></p>
+        <i>Hii this is just a dummy text which is
+        created for just to check that our program is running accurately or not</i>
+        <hr/>
+    </div>
+</div>
+<div class="row maxdiscount">
+   <div class="col-sm-1"></div>
+   <div class="col-sm-10 ">
+
+       <div class="row pt-3">
+           {% for i in productdata %}
+           <div class="col-sm-3">
+               <!--start product-->
+               <div class="card border-0 shadow p-3 mb-5  rounded offers tran" >
+
+                   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"> <i class="fa-solid fa-indian-rupee-sign"></i> {{i.discount}} <span class="visually-hidden">unread messages</span></span>
+
+
+  <img src="../{{i.product_image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+
+    <h5 class="card-title">{{i.product_name}}</h5>
+    <p class="card-text p-0 m-0">
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        <span>{{i.price}}</span> | {{i.quantity}}
+    <!--cart count-->
+      <form action="/cart/">
+      <input type="hidden" name="pid" value="{{i.id}}"/>
+      <input type="hidden" name="pimage" value="{{i.product_image}}"/>
+      <input type="hidden" name="pprice" value="{{i.price}}"/>
+      <input type="hidden" name="pname" value="{{i.product_name}}"/>
+      <input type="hidden" name="pw" value="{{i.quantity}}"/>
+
+
+
+
+
+      <div class="input-group">
+      <b class="input-group-text fs-4 " onclick="cminus{{i.id}}()">-</b>
+        <input type="text"  value="0" name="pquantity" readonly class="form-control text-center " id="carttxt{{i.id}}"/>
+      <b class="input-group-text fs-4" onclick="cplus{{i.id}}()">+</b>
+  </div>
+    <!-- end cart count--></p>
+
+
+    <input type="submit" value="Add" class="btn bg-colororange text-light"/>
+  </form>
+  </div>
+</div>
+
+               <!--end product-->
+           </div>
+           <script>
+               var x{{i.id}}=0
+               function cplus{{i.id}}()
+               {
+               x{{i.id}}++;
+               document.getElementById("carttxt{{i.id}}").value=x{{i.id}}
+               }
+               function cminus{{i.id}}()
+               {
+               if(x{{i.id}}>0)
+               {
+               x{{i.id}}--;
+               document.getElementById("carttxt{{i.id}}").value=x{{i.id}}
+               }
+               }
+
+           </script>
+{% endfor %}
+
+       </div>
+   </div>
+   <div class="col-sm-1"></div>
+</div>
+<div class="row offer">
+    <div class="col-sm-10 mx-auto">
+        <div class="row text-center pb-3">
+            <div class="col-sm-12 fs-3 ">
+               <span>Special <b class="txt-colororange">Offer's</b></span>
+            </div>
+        </div>
+        <div class="row pb-3" >
+            <div class="col-sm-4 pb-2 text-center">
+                <img src="{% static 'images/offer/offer-1.jpg' %}" class="img-fluid  "/>
+            </div>
+            <div class="col-sm-4 pb-2 text-center">
+                <img src="{% static 'images/offer/offer-2.jpg' %}" class="img-fluid"/>
+            </div>
+            <div class="col-sm-4 pb-2 text-center">
+                <img src="{% static 'images/offer/offer-3.jpg' %}" class="img-fluid"/>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--our service section strart-->
+<!--heading-->
+
+<div class="row mb-2 mt-4">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-7 ">
+        <p class="fs-3 m-0 p-0 ">Our <b class="txt-colororange">Services <i class="fa-solid fa-cogs"></i></b></p>
+        <i>Hii this is just a dummy text which is
+        created for just to check that our program is running accurately or not</i>
+        <hr/>
+    </div>
+</div>
+<!--heading end-->
+
+<div class="container">
+    <div class="row  ">
+        <div class="col-sm-3 text-center my-5">
+            <i class="fa-solid fa-truck-fast fs-3 ic "></i>
+            <h2>Free Shipping</h2>
+            <span>On the order above ₹ 399/-</span>
+        </div>
+<div class="col-sm-3 text-center my-5">
+            <i class="fa-solid fa-lock fs-3 ic "></i>
+            <h2>Secure Payments</h2>
+            <span>Safe transactions, guaranteed security.</span>
+        </div>
+        <div class="col-sm-3 text-center my-5">
+            <i class="fa-solid fa-undo fs-3 ic "></i>
+            <h2>Easy Returns</h2>
+            <span>Simple process, hassle-free.</span>
+        </div>
+        <div class="col-sm-3 text-center my-5">
+            <i class="fa-solid fa-tags fs-3 ic "></i>
+            <h2>Exclusive Discounts</h2>
+            <span> Special deals just for you.</span>
+        </div>
+    </div>
+</div>
+
+
+<!--team section-->
+<div class="row team ">
+    <div class="text-center fs-3 ">Our  <b class="txt-colororange">Team</b></div>
+    <div class="col-sm-3">
+        <div class="card mx-auto cardzoom my-4" style="width: 18rem;">
+  <img src="{% static 'images/team/img-1.jpg' %}" class="card-img-top img-fluid" alt="..." >
+  <div class="card-body">
+    <h5 class="card-title">Rahul Soni</h5>
+      <h6 class="card-subtitle">CEO</h6>
+    <p class="card-text text-justify">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
+    </div>
+    <div class="col-sm-3">
+        <div class="card mx-auto cardzoom my-4" style="width: 18rem;">
+  <img src="{% static 'images/team/sh2.png' %}" class="card-img-top img-fluid" alt="..." >
+  <div class="card-body">
+    <h5 class="card-title">SHIVAM YADAV</h5>
+      <h6 class="card-subtitle">Product Quality checker</h6>
+    <p class="card-text text-justify">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card mx-auto cardzoom my-4" style="width: 18rem;">
+  <img src="{% static 'images/team/img-3.jpg' %}" class="card-img-top img-fluid" alt="..." >
+  <div class="card-body">
+    <h5 class="card-title">Divya Rai</h5>
+      <h6 class="card-subtitle">Project Manager</h6>
+    <p class="card-text text-justify">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card mx-auto cardzoom my-4" style="width: 18rem;">
+  <img src="{% static 'images/team/sh4.png' %}" class="card-img-top img-fluid" alt="..." >
+  <div class="card-body">
+    <h5 class="card-title">SHIVAM YADAV</h5>
+      <h6 class="card-subtitle">Marketing head</h6>
+    <p class="card-text text-justify ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+    </div>
+</div>
+
+{% endblock %}

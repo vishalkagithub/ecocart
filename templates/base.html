@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+{% load static  %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+      <link href="{% static 'css/all.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet"/>
+
+
+</head>
+<style>
+
+
+
+.bg-colorgreen
+{
+background:#212529 !important;
+}
+.bg-colororange
+{
+background:#f7931e !important;
+}
+.txt-colorgreen
+{
+color:#31a650 !important;;
+}
+.txt-colororange
+{
+color:#f7931e !important;;
+}
+.t1 a{
+text-decoration:none;
+color:white;
+
+}
+.t1{
+font-size:12px;
+}
+.ico{
+
+height:20px;
+width:20px;
+text-align:center;
+line-height:20px;
+transition:all .5s;
+border-radius:2px;
+}
+.ico:hover{
+
+color:#f7931e;
+transform:rotate(360deg) ;
+transition:all .5s;
+}
+#menu{
+background:transparent !important;
+}
+#menu ul li a{
+color:white;
+}
+.product:hover{
+transform:scale(1.06);
+color:#f7931e;
+}
+.offers:hover{
+transform:translatey(-10px);
+}
+.tran{
+transition:all .3s;
+}
+.ufooter{
+min-height:300px;
+background:#212529;
+}
+.fico:hover{
+
+color:#f7931e;
+transform:rotate(360deg) ;
+transition:all .5s;
+}
+.bfooter{
+background:#212529;
+margin-top:1px;
+text-align:center;
+}
+.u2 a{
+text-decoration:none;
+color:#bbbbbb;
+}
+.u2 a:hover{
+color:orange;
+}
+.white{
+color:#bbbbbb;
+}
+.bg-colorblack{
+background:#212529;
+}
+.icon:hover{
+transform:rotate(360deg) ;
+color:#f7931e;
+transition:all .6s;
+}
+.brand:hover{
+transform:scale(1.2) ;
+
+transition:all .4s;
+
+}
+.brand{
+transition:all .4s;
+}
+.orange:hover{
+color:#d7e057;
+}
+</style>
+
+<!---.bfooter a
+{
+color:white;
+text-decoration:none;
+}  ------>
+
+<body>
+<!--container-->
+<div class="container-fluid">
+    <!--row t1-->
+    <div class="row t1  border-bottom border-dark  text-center py-1 text-bg-dark">
+        <div class="col-sm-3 ">
+            <a href="#">FAQs</a> |
+            <a href="#">About Us</a> |
+            <a href="#">Contact & Support</a>
+
+
+        </div>
+        <div class="col-sm-3">
+              <i class="fa-solid fa-phone ico"></i>
+             +91-8115500585
+        </div>
+        <div class="col-sm-3">
+        <i class="fa-regular fa-envelope ico"></i>
+        yourecocart@gmail.com
+        </div>
+        <div class="col-sm-3">
+            <i class="fa-brands fa-facebook me-1 ico"></i>
+            <i class="fa-brands fa-twitter me-1 ico"></i>
+            <i class="fa-brands fa-youtube me-1 ico"></i>
+            <i class="fa-brands fa-instagram me-1 ico"></i>
+            <i class="fa-brands fa-linkedin ico"></i>
+
+        </div>
+
+    </div><!--end of row t1-->
+
+    <div class="row t2 text-center py-3 ">
+        <div class="col-sm-3 fs-1">
+            Eco<b class="txt-colororange">Cart <i class="fa-solid fa-bag-shopping"></i></b>
+        </div>
+        <div class="col-sm-5 py-3">
+            {% if request.session.user %}
+            <a href="/history/" class="btn btn-sm bg-colororange text-light">
+                <i class="fas fa-history"></i> Order-history</a>
+
+             <a href="/profile/" class="btn btn-sm bg-colororange text-light">
+                 <i class="fas fa-user-circle"></i> My profile</a>
+            {% else %}
+            <h2 class="text-center">Welcome to ECOCART </h2>
+            {% endif %}
+        </div>
+        <div class="col-sm-4 py-3 ">
+            <a href="/cartitem/" class="btn btn-sm bg-colororange">Cart <i class="fa-solid fa-cart-shopping"></i>
+            <i class="badge bg-dark">
+                {% if request.session.user %}
+                {{request.session.cartitems}}
+                {% else %}
+
+                0
+
+                {% endif %}
+            </i>
+            </a>
+
+            {% if request.session.user %}
+             <img src="../{{request.session.userpic}}" height="35px" class="p-1 rounded-circle "/>
+            <b>{{request.session.username}}</b>
+            {% else %}
+             <i class="fa-regular fa-user"></i> Guest
+            {% endif %}
+
+
+        </div>
+
+
+    </div>
+    <div class="row t3 bg-colorgreen mb-1 sticky-top shadow-lg" style="min-height:40px;">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-7 ">
+        <!--start menu-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary p-0 " id="menu">
+  <div class="container-fluid ">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav ">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home/"><i class="fa-solid fa-house"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/product/"><i class="fa-solid fa-box"></i> Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/"><i class="fa-solid fa-info-circle"></i> About Us</a>
+        </li>
+             <li class="nav-item">
+          <a class="nav-link" href="/contact/"><i class="fas fa-headset"></i> Contact Us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/faqs/"> <i class="fa-solid fa-question-circle"></i> FAQ's</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fa-solid fa-blog"></i> Blogs</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" href="/register/"><i class="fa-solid fa-user-plus"></i> Register</a>
+        </li>
+
+
+          <li class="nav-item">
+              {% if request.session.user %}
+          <a class="nav-link" href="/logout/"><i class="fa-solid fa-power-off"></i> Logout</a>
+
+              {% else %}
+          <a class="nav-link" href="/login/"><i class="fa-solid fa-sign-in-alt"></i> Login</a>
+
+              {% endif %}
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+        <!--end menu-->
+    </div>
+    <div class="col-sm-2"></div>
+
+    </div>
+<div class="row">
+    <div class="col-sm-12 childpage" style="min-height:500px;">
+        {% block childpage %}
+        {% endblock %}
+    </div>
+</div>
+
+
+<div class="row ufooter mt-3">
+    <!--startfooter-->
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+    <div class="row u1 py-4 border-bottom border-light text-light">
+
+<div class="col-sm-6 ">
+    <b class=" fs-4 ">Subscribe To Our Newsletter <i class="fa-solid fa-gift brand "></i></b><br/>
+    <span class="white orange">Subscribe to our Newsletter and get 20% off on your first purchase</span>
+</div>
+            <div class="col-sm-1"></div>
+<div class="col-sm-5 pt-3">
+<div class="input-group   rounded text-center">
+        <input type="text"  placeholder="Please enter your email here....." class="form-control text-center " />
+      <b class="input-group-text text-bg-dark " >Subscribe</b>
+  </div>
+
+</div>
+
+
+
+
+    </div>
+    <div class="row u2 text-light">
+<div class="col-sm-3  pt-4">
+    <span class="fs-2"> ECO<b class="txt-colororange">CART <i class="fa-solid fa-bag-shopping brand "></i></b>      </span>
+    <br/><span class="orange">---------------------------</span><br/>
+    &rarr;<span class="white">&copy 2024 Techpile pvt limited</span><br/>
+    <img src="{% static 'images/ufooter/paypal.png' %}" style="height:40px;" class="img-fluid mt-2"/>
+
+
+</div>
+<div class="col-sm-3 ps-5  py-4">
+    <!-- footer first column link-->
+   <div class="row ">
+      <div class="col-sm-12">
+        <b class="fs-5">Useful Links</b>
+      </div>
+   </div>
+    <div class="row ">
+        <div class="col-sm-12">
+            <a href="#">About</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <a href="#">Blogs</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <a href="#">Offer's</a>
+        </div>
+    </div>
+ <div class="row  mt-2">
+        <div class="col-sm-12">
+            <a href="#">Affiliate Program's</a>
+        </div>
+    </div>
+    <!--footer one column link-->
+</div>
+<div class="col-sm-3  ps-5  py-4">
+    <!-- footer second column links-->
+       <div class="row ">
+      <div class="col-sm-12 ">
+          <b class="fs-5">My Account</b>
+      </div>
+   </div>
+      <div class="row ">
+        <div class="col-sm-12">
+            <a href="#">Sign In</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <a href="#">View Cart</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <a href="#">Track my Order</a>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+      <div class="row mt-2">
+        <div class="col-sm-12">
+            <a href="#">FAQ's</a>
+        </div>
+    </div>
+    <!-- footer second column links end-->
+</div>
+<div class="col-sm-3  py-4"><!--start address-->
+    <div class="row ">
+        <div class="col-sm-12 pb-2">
+            <b class="fs-5 ">Registered Address</b>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-sm-12 "><i class="fa-solid fa-house icon"></i>
+            <span class="white ps-2">Plot No-43, Behind H.P Petrol Pump,
+            Tedhi Pulia Ring Rd, Sector 5,
+            Vikas Nagar, Lucknow,
+            Uttar Pradesh 226022</span>
+        </div>
+    </div>
+<div class="row mt-2">
+    <div class="col-sm-12 ">
+<i class="fa-solid fa-phone icon"></i> <span class="white">+91-8115500585</span>
+    </div>
+</div>
+
+    <div class="row mt-2">
+    <div class="col-sm-12 ">
+<i class="fa-solid fa-envelope icon"></i> <span class="white"> yourecocart@gmail.com</span>
+    </div>
+</div>
+
+
+
+</div>
+    </div>
+
+    <div class="row u3 p-2">
+
+        <div class="col-sm-3 text-center mx-auto py-1 mb-2 text-light ">
+<i class="fab fa-facebook-f me-2 fico p-1 border border-light rounded"></i>
+<i class="fab fa-twitter me-2 p-1 fico  border border-light rounded"></i>
+<i class="fab fa-instagram me-2  fico p-1 border border-light rounded"></i>
+<i class="fab fa-linkedin-in me-2 fico p-1  border border-light rounded"></i>
+<i class="fab fa-youtube me-2  p-1 fico border border-light rounded"></i>
+        </div>
+
+    </div>
+
+</div>
+<div class="col-sm-2"></div>
+    <!--end footer-->
+</div>
+<div class="row bfooter py-3">
+   <div class="row">
+       <div class="col-sm-6 text-light">
+<a href="/portfolio/">
+    Developed By : Er.Vishal Verma
+    </a>
+</div>
+
+    <div class="col-sm-6 text-light">
+     <a href="https://www.techpile.in">  &copy Copyright To : Techpile Technology Pvt. Ltd.</a>
+    </div>
+       </div>
+</div>
+
+
+</div>
+
+<script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+
+<script>
+   var i=0
+    function cplus()
+    {
+      i++;
+      document.getElementById("carttxt").value=i
+
+    }
+    function cminus()
+    { if(i>0)
+    {
+        i--;
+        document.getElementById("carttxt").value=i
+    }
+    }
+
+    var a=0
+    function cplus1()
+    {
+      a++;
+      document.getElementById("carttxt1").value=a
+
+    }
+    function cminus1()
+    { if(a>0)
+    {
+        a--;
+        document.getElementById("carttxt1").value=a
+    }
+    }
+    var b=0
+    function cplus2()
+    {
+      b++;
+      document.getElementById("carttxt2").value=b
+
+    }
+    function cminus2()
+    { if(b>0)
+    {
+        b--;
+        document.getElementById("carttxt2").value=b
+    }
+    }
+     var c=0
+    function cplus3()
+    {
+      c++;
+      document.getElementById("carttxt3").value=c
+
+    }
+    function cminus3()
+    { if(c>0)
+    {
+        c--;
+        document.getElementById("carttxt3").value=c
+    }
+    }
+</script>
+</body>
+</html>

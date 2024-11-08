@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block childpage %}
+<style>
+.form-control{
+height:50px;
+background:#e9eaec !important;
+border-radius:0px !important;
+
+    }
+.input-group-text{
+
+
+
+border-radius:0px !important;
+
+}
+
+</style>
+
+
+<div class="container"><!--heading-->
+ <div class="row mb-2 ">
+
+    <div class="col-sm-4 mx-auto text-center">
+        <p class="fs-3 m-0 p-0 ">Register <b class="txt-colororange">Now <i class="fas fa-user-plus"></i></b></p>
+        <hr/>
+        <i>Hii this is just a dummy text which is
+        created for just to check that our program is running accurately or not</i>
+        <hr/>
+    </div>
+</div>
+    <!--end heading-->
+
+
+      <!--registration form start-->
+<div class="row  ">
+    <div class="col-sm-8 mx-auto shadow-lg p-5 ">
+        <form autocomplete="off" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="row mt-4">
+            <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fa-solid fa-user"></i></span>
+  <input type="text" class="form-control" name="name" placeholder="Enter your name...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+              <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+  <input type="Email" class="form-control" name="email" placeholder="Enter your Email...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+        </div>
+         <div class="row mt-4">
+            <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fas fa-key"></i></span>
+  <input type="password" class="form-control"  name="passwd" placeholder="Enter your password...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+              <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fas fa-phone"></i></span>
+  <input type="number" class="form-control"  name="mobile" placeholder="Enter your mobile number...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+        </div>
+         <div class="row mt-4">
+            <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fa-solid fa-map-marker-alt"></i></span>
+  <input type="text" class="form-control"  name="address" placeholder="Enter your Address...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+              <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fa-solid fa-city"></i></span>
+  <input type="text" class="form-control"  name="city" placeholder="Enter your City...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+        </div>
+         <div class="row my-4">
+            <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fa-solid fa-map"></i></span>
+  <input type="number" class="form-control"  name="pincode" placeholder="Enter your Pincode...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+              <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fa-solid fa-file-upload"></i></span>
+  <input type="file" class="form-control"  name="fu" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+        </div>
+<input type="submit" value="Register Here "  class="btn bg-colororange text-light rounded-0 text-center w-100 fs-5 mb-4"/>
+        </form>
+    </div>
+</div>
+     <!--registration form end-->
+</div>
+
+{% endblock %}

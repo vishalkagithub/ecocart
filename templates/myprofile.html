@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block childpage %}
+{% if not request.session.user %}
+<script>
+    alert("You have to login first.... ")
+    location.href='/login/'
+</script>
+
+{% endif %}
+<!--start heading-->
+<style>
+.form-control{
+height:50px;
+background:#e9eaec !important;
+border-radius:0px !important;
+
+    }
+.input-group-text{
+
+
+
+border-radius:0px !important;
+
+}
+
+</style>
+ <div class="row mb-2 ">
+
+    <div class="col-sm-5 mx-auto text-center">
+        <p class="fs-3 m-0 p-0 ">My <b class="txt-colororange">Profile <i class="fas fa-user-circle"></i></b></p>
+        <hr/>
+        <i>Hii this is just a dummy text which is
+        created for just to check that our </i>
+        <hr/>
+    </div>
+</div>
+<!--end heading-->
+{% for i in userinfo %}
+
+<div class="row mt-5 profile ">
+    <div class="col-sm-4 shadow-lg mb-3 p-5 mx-auto position-relative mt-5" >
+        <img src="../{{i.picture}}" style="height:200px;width:200px; " class=" rounded-pill p-1 border border-dark border-1 position-absolute top-0 start-50 translate-middle "/>
+        <div class="pt-5 "><b><i class="fas fa-user-circle"></i> Name :</b> {{i.name}}<br/>
+        <b><i class="fas fa-user-circle"></i> Mobile :</b> {{i.mobile}}<br/>
+        <b><i class="fas fa-user-circle"></i> Email :</b> {{i.email}}<br/>
+        <b><i class="fas fa-user-circle"></i> Address :</b> {{i.address}}<br/>
+        <b><i class="fas fa-user-circle"></i> City :</b> {{i.city}}<br/>
+            <b><i class="fas fa-user-circle"></i> Pincode :</b> {{i.Pincode}}<br/></div>
+    <p id="btnu" class="btn btn-outline-dark rounded-0 "><i class="fas fa-pencil"></i> Update Profile</p>
+
+    </div>
+</div>
+
+<br/>
+      <!--update form start-->
+<div class="row mt-4 " id="uform" style="display:none;">
+    <div class="col-sm-8 mx-auto shadow-lg p-5 ">
+        <form autocomplete="off" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="row mt-4">
+            <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fa-solid fa-user"></i></span>
+  <input type="text" class="form-control" name="name" value="{{i.name}}" placeholder="Enter your name...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+              <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fas fa-key"></i></span>
+  <input type="password" class="form-control"  name="passwd"  value="{{i.password}}" placeholder="Enter your password...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+        </div>
+         <div class="row mt-4">
+            <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fas fa-key"></i></span>
+  <input type="password" class="form-control"  name="cpasswd"  placeholder="Confirm your password...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+              <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fas fa-phone"></i></span>
+  <input type="number" class="form-control"  name="mobile" value="{{i.mobile}}" placeholder="Enter your mobile number...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+        </div>
+         <div class="row mt-4">
+            <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fa-solid fa-map-marker-alt"></i></span>
+  <input type="text" class="form-control"  name="address"  value="{{i.address}}" placeholder="Enter your Address...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+              <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fa-solid fa-city"></i></span>
+  <input type="text" class="form-control"  name="city"  value="{{i.city}}" placeholder="Enter your City...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+        </div>
+         <div class="row my-4">
+            <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fa-solid fa-map"></i></span>
+  <input type="number" class="form-control"  name="pincode"  value="{{i.Pincode       }}" placeholder="Enter your Pincode...." aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+              <div class="col-sm-6">
+                <div class="input-group flex-nowrap ">
+  <span class="input-group-text" ><i class="fa-solid fa-file-upload"></i></span>
+  <input type="file" class="form-control"   required name="fu" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+            </div>
+        </div>
+<input type="submit" value="Register Here "  class="btn bg-colororange text-light rounded-0 text-center w-100 fs-5 mb-4"/>
+        </form>
+    </div>
+</div>
+{% endfor %}
+     <!--registration form end-->
+<script src="{% static 'js/jquery-3.7.1.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+
+   $("#btnu").click(function(){
+
+   $("#uform").slideDown(1000)
+
+   })
+
+
+    })
+
+</script>
+{% endblock %}

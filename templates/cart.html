@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block childpage %}
+
+{% if not request.session.user %}
+<script>
+    alert("You have to login first.... ")
+    location.href='/login/'
+</script>
+{% endif %}
+
+<!--start heading-->
+ <div class="row mb-2 ">
+
+    <div class="col-sm-4 mx-auto text-center">
+        <p class="fs-3 m-0 p-0 ">Your cart added <b class="txt-colororange">Items <i class="fas fa-cart-plus"></i></b></p>
+        <hr/>
+        <i>Hii this is just a dummy text which is
+        created for just to check that our program is running accurately or not</i>
+        <hr/>
+    </div>
+</div>
+<!--end heading-->
+
+{% endblock %}

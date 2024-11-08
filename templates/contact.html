@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block childpage %}
+<style>
+    .form-control{
+    height:50px;
+
+    }
+
+    .icon:hover{
+    transform:rotate(360deg);
+    transition:all .8s;
+    }
+
+</style>
+<div class="row heading text-center my-3">
+    <div class="col-sm-5 mx-auto">
+    <p class="fs-2 p-0 m-0">Contact <b class="txt-colororange">Us <i class="fas fa-headset"></i></b></p>
+        <i>This is a dummy text this is dummy text just make for some showcase</i>
+    </div>
+</div>
+<!--start contact us-->
+<div class="row ">
+    <div class="col-sm-10 mx-auto">
+        <div class="row ">
+            <div class="col-sm-6  bg-light shadow-lg rounded ">
+                <div class="row ">
+                    <div class="col-sm-4 mx-auto text-center fs-3 pt-5">
+                        Contact <b class="txt-colororange">Info</b><hr/>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col-sm-7  mx-auto text-center fs-4 pt-3">
+                     <i class="fa-solid fa-house pe-1 txt-colororange icon"></i> Office <b>Address</b>
+                     <p class="pt-2 fs-5">
+                        Plot No-43, Behind H.P Petrol Pump,
+                         Tedhi Pulia Ring Rd, Sector 5,
+                         Vikas Nagar, Lucknow,
+                         Uttar Pradesh 226022
+
+                        </p>
+                    </div>
+                </div>
+                 <div class="row ">
+                    <div class="col-sm-7  mx-auto text-center fs-4 pt-3">
+                   <i class="fa-solid fa-phone pe-1 txt-colororange icon"></i> Call <b>Us</b>
+                     <p class="pt-2 fs-5">
+                      +91-8115500585
+
+                        </p>
+                    </div>
+                </div>
+                 <div class="row ">
+                    <div class="col-sm-7  mx-auto text-center fs-4 pt-3">
+                   <i class="fa-solid fa-envelope pe-1 txt-colororange icon"></i> Mail <b>Us</b>
+                     <p class="pt-2 fs-5">
+                      Ecobyrahulsoni@gmail.com ,<br/>
+                         yourecocart@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6  p-4 ">
+                <!--form design-->
+                <form autocomplete="off" method="post">
+                    {% csrf_token %}
+                    Name<br/>
+                    <input name="name" class="form-control shadow-lg mb-2 bg-body-tertiary rounded-0" type="text" required placeholder="Enter your Name...."/>
+                    Email<br/>
+                    <input name="email" class="form-control shadow-lg mb-2 bg-body-tertiary rounded-0" type="email" required placeholder="Enter your Email...."/>
+                    Mobile<br/>
+                    <input name="mobile" class="form-control shadow-lg mb-2 bg-body-tertiary rounded-0" type="number" required placeholder="Enter your Number...."/>
+                    Subject<br/>
+                    <input name="subject" class="form-control shadow-lg mb-2 bg-body-tertiary rounded-0" type="text" required placeholder="Enter your Subject...."/>
+                    Message<br/>
+                <textarea name="msg" class="form-control shadow-lg  bg-body-tertiary rounded-0" placeholder="Enter your Message...." style="min-height:90px;"></textarea><br/>
+                    <input type="submit" value="save" class="form-control shadow-lg  w-25 mx-auto rounded    bg-warning"/>
+                </form>
+                <!--end form design-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--end contact us-->
+<div class="row heading text-center my-3">
+    <div class="col-sm-5 mx-auto">
+    <p class="fs-2 p-0 m-0">Find Us on <b class="txt-colororange">Google Map <i class="fa-solid fa-location-dot icon"></i></b></p>
+        <i>This is a dummy text this is dummy text just make for some showcase</i>
+    </div>
+</div>
+<div class="row gmap">
+    <div class="col-sm-10 mx-auto">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.161150933276!2d80.96384467514441!3d26.898380260706872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39995785d5f7f1a5%3A0xffa47f1efe103f0d!2sTechpile%20Technology%20Pvt.%20Ltd.%20%7C%7C%20Internet%20website%20developers!5e0!3m2!1sen!2sin!4v1726643547953!5m2!1sen!2sin" style="width:100%; max-height:500px; min-height:350px;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+{% endblock %}

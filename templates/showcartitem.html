@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block childpage %}
+
+{% if not request.session.user %}
+<script>
+  alert("You have to login first")
+  location.href='/login/'
+</script>
+
+{% endif %}
+<!--start heading-->
+ <div class="row mb-2 ">
+
+    <div class="col-sm-4 mx-auto text-center">
+        <p class="fs-3 m-0 p-0 ">Your cart added <b class="txt-colororange">Items <i class="fas fa-cart-plus"></i></b></p>
+        <hr/>
+        <i>Hii this is just a dummy text which is
+        created for just to check that our program is running accurately or not</i>
+        <hr/>
+    </div>
+</div>
+<!--end heading-->
+<div class="row">
+  <div class="col-sm-8 mx-auto">
+    {% for i in cartdata %}
+
+    <!--cart items-->
+<div class="row">
+  <div class="col-sm-12">
+
+
+    <div class="card mb-3 shadow-lg" >
+  <div class="row g-0">
+    <div class="col-md-2">
+      <img src="../{{i.product_image}}" style="max-height:150px;" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-10">
+      <div class="card-body">
+      <table class="table table-hover">
+        <tr>
+          <th>Name</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+          <th>Added Date</th>
+          <th>Cancel</th>
+        </tr>
+
+        <tr>
+          <td><b>{{i.product_name}}</b> | {{i.pw}}</td>
+          <td><i class="fas fa-indian-rupee-sign"></i> {{i.product_price}}</td>
+          <td> {{i.quantity}} </td>
+          <td><i class="fas fa-indian-rupee-sign"></i> {{i.total_price}}</td>
+          <td> {{i.added_date}} </td>
+          <td> <a href="/cartitem?cid={{i.id}}" class="btn btn-sm btn-danger">Remove <i class="fas fa-trash"></i></a> </td>
+        </tr>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+
+
+    <!--End items-->
+    {% endfor %}
+    <a href="/order?msg=1/" class="btn btn-danger ">Order Now</a>
+  </div>
+</div>
+
+{% endblock %}
